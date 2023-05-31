@@ -1,0 +1,52 @@
+<script>
+    export class node{
+        constructor(data){
+          this.name = data.name;
+          this.coordinatex = data.coordinatex;
+          this.coordinatey = data.coordinatey;
+          this.predict_value = data.predict_value;
+          this.father_node = data.father_node;
+        }
+    }
+    export class prior_queue{
+        constructor(){
+            this.value = [];
+        }
+        enqueue(data){
+            this.value.push(data);
+
+        }
+        bubbleup(){
+            var idx = this.value.length-1;
+            var parents_idx = Math.floor(idx-1 / 2);
+            while (this.value[parents_idx].predict_value < this.value[idx].predict_value){
+                [this.value[parents_idx].predict_value , this.value[idx].predict_value] = [this.value[idx].predict_value , this.value[parents_idx].predict_value];
+                idx = parents_idx;
+            }
+        }
+        dequeue(){
+            var temp = this.value[0];
+            this.value[0] = this.value[this.value.length-1];
+            var tmp = 0;
+            this.value.pop();
+            var leftchild = tmp * 2 + 1;
+            var swapid;
+            while(tmp <= this.value.length()){
+                var rightchild = tmp+1 <= this.value.length()? tmp+1 : -1;
+                if(rightchild != -1 && this.value[rightchild] < this.value[leftchild] ){
+                    swapid = rightchild;
+                }
+                else {
+                    swapid = leftchild;
+                }
+                if(this.value[swapid] < this.value[tmp]){
+                    [this.value[swapid] , this.value[tmp]] = [this.value[tmp] , this.value[swapid]];
+                    tmp = swapid;
+                    leftchild = tmp * 2 + 1;
+                }
+                else break;
+            }
+        }
+    }
+    
+</script>
