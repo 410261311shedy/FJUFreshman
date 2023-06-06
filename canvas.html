@@ -64,7 +64,7 @@
 			var destinationElement = document.getElementById("destination");
 			destinationElement.textContent = destination;
 			
-			alert("Location: "+location + "Destination: " + destination);
+			
 			
 			var c=document.getElementById("canvas");
 			var ctx=c.getContext("2d");
@@ -79,6 +79,7 @@
 			ctx.stroke();
 			function goBack()
 			{	
+				alert("Location: "+location + "Destination: " + destination);
 				window.location.href = "index.html";
 			}
 	        </script>
