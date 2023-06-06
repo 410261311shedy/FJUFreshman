@@ -55,14 +55,13 @@
 			var locationValue = urlParams.get("location");
 			var destinationValue = urlParams.get("destination");
 
-			console.log(location); // 輸出使用者輸入的 location 值
-			console.log(destination); // 輸出使用者輸入的 destination 值
-			
-			//賦予值
+			console.log(locationValue); 
+			console.log(destinationValue);
+
 			var locationElement = document.getElementById("location");
-			locationElement.textContent = location;
+			locationElement.textContent = locationValue;
 			var destinationElement = document.getElementById("destination");
-			destinationElement.textContent = destination;
+			destinationElement.textContent = destinationValue;
 			
 			
 			
