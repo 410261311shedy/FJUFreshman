@@ -21,25 +21,27 @@
 		</style>
 	</head>
 	<body class="is-preload">
-		<h2 class="major">Map</h2>
+		<div id="wrapper">
+			<h2 class="major">Map</h2>
 
-			<div class="fields">
-				<div class="field","centered";>
-					<label for="location" style> <center><p class = 'mapfont'>Your Location</p></label>
-					<input type="text" name="Location" id="location" />
+				<div class="fields">
+					<div class="field","centered";>
+						<label for="location" style> <center><p class = 'mapfont'>Your Location</p></label>
+						<input type="text" name="Location" id="location" />
+					</div>
+					<br/>
+					<div class="field","centered";>
+						<label for="destination"><center><p class = 'mapfont'>Your Destination</p></label>
+						<input type="text" name="Destination" id="destination" />
+					</div>
 				</div>
-				<br/>
-				<div class="field","centered";>
-					<label for="destination"><center><p class = 'mapfont'>Your Destination</p></label>
-					<input type="text" name="Destination" id="destination" />
-				</div>
-			</div>
 
-			<div class="centered">
-				<ul class="actions">
-					<li><button onclick="goToCanvasPage()">goback</button></li>
-				</ul>
-			</div>				
+				<div class="centered">
+					<ul class="actions">
+						<li><button onclick="goToCanvasPage()">goback</button></li>
+					</ul>
+				</div>	
+		</div>
 		<!-- BG -->
 			<div id="bg"></div>
 		<!-- Scripts -->
