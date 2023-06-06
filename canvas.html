@@ -34,7 +34,7 @@
 		<div id="wrapper">
 			<h2 class="major">Way To Your Destination</h2>
 
-					<canvas class="cover-fit" id="canvas" width="2010" height="1507" style="background: url('https://github.com/410261311shedy/FJUFreshman/raw/main/images/FJUmap.jpg'); background-size: cover;">OH YEAH!!!</canvas>
+					<canvas class="cover-fit" id="canvas" width="2010" height="1507" style="background: url('https://github.com/410261311shedy/FJUFreshman/raw/main/images/FJUmap.jpg'); background-size: cover;border:1px solid #000000;">OH YEAH!!!</canvas>
 					
 					<ul class="actions">
 						<li><button onclick="goBack()">goback</button></li>
@@ -51,6 +51,11 @@
 			<script src="assets/js/main.js"></script>
 		<!-- code -->
 		<script>
+			var c=document.getElementById("canvas");
+			var ctx=c.getContext("2d");
+			ctx.moveTo(0,0);
+			ctx.lineTo(200,100);
+			ctx.stroke();
 			function goBack()
 			{	
 				window.location.href = "index.html";
