@@ -112,6 +112,206 @@
 				alert("Location: "+location + "  " + "Destination: " + destination);	
 				window.location.href = "canvas.html?location=" + encodeURIComponent(location) + "&destination=" + encodeURIComponent(destination);
 			}
+			class node{
+    constructor(nam, coordinatex, coordinatey, predict_value, father_node,g_value){
+      this.coordinatex = coordinatex;
+      this.coordinatey = coordinatey;
+      this.predict_value = predict_value;
+      this.father_node = father_node;
+      this.nam = nam;
+      this.g_value = g_value;
+    }
+    push(nam, coordinatex, coordinatey, predict_value, father_node,g_value){
+        this.nam = nam;
+        this.coordinatex = coordinatex;
+        this.coordinatey = coordinatey;
+        this.predict_value = predict_value;
+        this.father_node = father_node;
+        this.g_value = g_value;
+    }
+}
+ class prior_queue{
+    constructor(){
+        this.value = [];
+    }
+    enqueue(nam, coordinatex, coordinatey, predict_value, father_node,g_value){
+        //let newnode = new node(nam, coordinatex, coordinatey, predict_value, father_node);
+        this.value.push(new node(nam, coordinatex, coordinatey, predict_value, father_node,g_value));
+        this.value.length > 1 && this.bubbleup();
+    }
+    bubbleup(){
+        let idx = this.value.length-1;
+        let parents_idx = Math.floor((idx-1) / 2);
+        const {value} = this;
+        while (value[parents_idx]?.predict_value > value[idx].predict_value ){
+            [value[parents_idx].predict_value , value[idx].predict_value] = [value[idx].predict_value , value[parents_idx].predict_value];
+            idx = parents_idx;
+            parents_idx = Math.floor((idx-1) / 2);
+        }
+    }
+    
+    dequeue(){
+        let root = this.value[0].nam;
+        this.value[0] = this.value[this.value.length-1];
+        let tmp = 0;
+        this.value.pop();
+        //let leftchild = tmp * 2 + 1;
+        let swapid;
+        while(tmp < this.value.length){
+            let leftChildIdx = tmp * 2 + 1;
+            let rightChildIdx = tmp * 2 + 2;
+            //let rightchild = tmp+1 <= this.value.length? tmp+1 : -1;
+            if (
+                (rightChildIdx < this.value.length &&
+                  this.value[rightChildIdx].predict_value <
+                    this.value[leftChildIdx].predict_value) ||
+                (rightChildIdx < this.value.length &&
+                  this.value[rightChildIdx].predict_value <
+                    this.value[tmp].predict_value)
+              ) 
+               {
+                swapid = rightChildIdx;
+            }
+            else {
+                swapid = leftChildIdx;
+            }
+            if(this.value[swapid].predict_value < this.value[tmp].predict_value){
+                [this.value[swapid] , this.value[tmp]] = [this.value[tmp] , this.value[swapid]];
+                tmp = swapid;
+                leftChildIdx = tmp * 2 + 1;
+            }
+            else break;
+        }
+        return root;
+    }
+}
+    //document.write('<script src="pq.js"></script>');
+    var sequence = [];
+    sequence.push(new node(0,2225,1555,0,-1,0));
+    sequence.push(new node(1,2778,1522,0,-1,0));
+    sequence.push(new node(2,2274,1388,0,-1,0));
+    //console.log(sequence[1]);
+    //sequence.push(1,2778,1522,0,-1);
+    //sequence.push(2,2274,1388,0,-1);
+    /*sequence[0].nam = 0;
+    sequence[0].coordinatex = 2225;
+    nosequencede[0].coordinatey = 1555;
+    sequence[1].nam = 1;
+    sequence[1].coordinatex = 2778;
+    sequence[1].coordinatey = 1522;
+    sequence[2].nam = 2;
+    sequence[2].coordinatex = 2274;
+    sequence[2].coordinatey = 1388;*/
+    /*var wtrix = [];
+    wtrix[0] =new Array(0,1,0);
+    wtrix[1] =new Array(1,0,1);
+    wtrix[2] =new Array(0,1,0);*/ 
+    var openlist = new prior_queue();
+    function dis(a,b){
+         var x_first = a.coordinatex;
+         var x_sec = b.coordinatex;
+         var y_first = a.coordinatey;
+         var y_sec = b.coordinatey;
+         return Math.sqrt((x_sec - x_first) ** 2 + (y_sec - y_first) ** 2);
+
+    }
+    function Recursion(end_node,matrix,sequence){
+       // console.log(sequence[0]);
+       // console.log(sequence[1]);
+        //console.log(sequence[2]);
+        //console.log("sequence[1].father = " + sequence[1].father_node+ " ");
+        //console.log("here");
+        //console.log("openlist length" + openlist.value.length);
+        if (openlist.value.length != 0){
+            let temp = openlist.dequeue();
+            //let temp = rec.name;
+            var sig = 0;
+            for(let i = 0 ; i < matrix[temp].length ; i++){
+                //console.log(matrix[temp][i]+ " ");
+                //console.log("i = " + i + " ");
+                //console.log("sequence[i].father = " + sequence[i].father_node+ " ");
+                if(matrix[temp][i] !=0  &&  i == end_node){//find the node we want
+                    //console.log("koko");
+                    sequence[i].father_node = temp;
+                    //console.log("sequence"+i+" = "+sequence[i].father_node);
+                    //sequence[i].father = temp;
+                    sig = 1; 
+                    break;
+                }
+                else if(matrix[temp][i] != 0 &&  sequence[i].father_node == -1){//haven't visted
+                    //console.log("here");
+                    sequence[i].father_node = temp;
+                    //console.log("sequence"+i+" = "+sequence[i].father_node);
+                    sequence[i].g_value = dis(sequence[temp]  , sequence[i]) + sequence[temp].g_value;//g(n)
+                    var goofn = dis(sequence[i] , sequence[end_node]);//h(N)
+                    sequence[i].predict_value = sequence[i].g_value + goofn;
+                    openlist.enqueue(sequence[i].nam,sequence[i].coordinatex,sequence[i].coordinatey,sequence[i].predict_value,sequence[i].father,sequence[i].g_value);
+                }
+                else if(matrix[temp][i] != 0 &&  sequence[i].father !== -1 && sequence[temp].father != -1 && sequence[temp].father > 0){//have visited , calculate whether the new path is shortter
+                   // console.log("here");
+                    let googn = dis(sequence[temp]  , sequence[i]) + sequence[temp].g_value;//g(n)
+                    let goofn = dis(sequence[i] , sequence[end_node]);//h(N)
+                    var temp_fn = goofn + googn;
+                    if(sequence[i].g_value > googn){
+                        sequence[i].predict_value = temp_fn;
+                        sequence[i].g_value = googn;
+                        sequence[i].father_node = temp;
+                        //console.log("sequence"+i+" = "+sequence[i].father_node);
+                        openlist.enqueue(sequence[i].nam,sequence[i].coordinatex,sequence[i].coordinatey,sequence[i].predict_value,sequence[i].father,g_value);
+                    }
+                }
+            }
+        }
+        else console.log("openlsit is empty");
+        if(openlist.value.length != 0 && sig == 0)Recursion(end_node, matrix,sequence);
+    }
+    var wtrix = [];
+    wtrix[0] =new Array(0,1,0);
+    wtrix[1] =new Array(1,0,1);
+    wtrix[2] =new Array(0,1,0); 
+    function a_star(start_node , end_node,matrix,sequence){
+        sequence[start_node].father_node = -5;
+        sequence[start_node].g_value = 0;
+        openlist.enqueue(start_node,sequence[start_node].coordinatex,sequence[start_node].coordinatey,sequence[start_node].predict_value,sequence[start_node].father,sequence[start_node].g_value);
+        Recursion(end_node,matrix,sequence);
+        /*while (openlist.length != 0){
+            let temp = openlist.dequeue();
+            //let temp = rec.name;
+            for(let i = 0 ; i < 3 ; i++){
+                if(matrix[temp][i] !==0  &&  i == end_node){//find the node we want
+                    sequence[i].father = temp;
+                    return;
+                }
+                else if(matrix[temp][i] != 0 &&  sequence[i].father == -1){//haven't visted
+                    sequence[i].father = temp;
+                    var googn = dis(temp , sequence[i]);//g(n)
+                    var goofn = dis(sequence[i] , sequence[end_node]);//h(N)
+                    sequence[i].predict_value = googn + goofn;
+                    openlist.enqueue(sequence[i]);
+                }
+                else if(matrix[temp][i] != 0 &&  sequence[i].father !== -1 && sequence[temp].father != i){//have visited , calculate whether the new path is shortter
+                    let googn = dis(temp , sequence[i]);//g(n)
+                    let goofn = dis(sequence[i] , sequence[end_node]);//h(N)
+                    var temp_fn = goofn + googn;
+                    if(sequence[i].predict_value > temp_fn){
+                        sequence[i].predict_value = temp_fn;
+                        sequence[i].father = temp;
+                        openlist.enqueue(sequence[i]);
+                    }
+                }
+            }
+        }*/
+        var temp = end_node;//just for test,should solve from a to a problem 
+       while (sequence[temp].father_node != -5){
+            console.log(temp);
+            //console.log(sequence[temp].father);
+            temp = sequence[temp].father_node;
+        }
+        //console.log("1");
+    }
+    //var wtrix = [[0,1,0],[1,0,1],[0,1,0]];
+    
+    a_star(0, 2,wtrix,sequence);
 	        </script>
 		
 
