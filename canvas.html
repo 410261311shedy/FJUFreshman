@@ -58,6 +58,7 @@
 			console.log(locationValue); // 輸出使用者輸入的 location 值
 			console.log(destinationValue); // 輸出使用者輸入的 destination 值
 			
+			//賦予值
 			var locationElement = document.getElementById("locationValue");
 			locationElement.textContent = locationValue;
 			var destinationElement = document.getElementById("destinationValue");
@@ -74,7 +75,7 @@
 			
 			ctx.beginPath();
 			ctx.beginPath();
-			ctx.arc(200,200,100,0,2*Math.PI);
+			ctx.arc(100,50,70,0,2*Math.PI);
 			ctx.stroke();
 			function goBack()
 			{	
