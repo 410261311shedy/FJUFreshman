@@ -53,6 +53,11 @@
 		<script>
 			var c=document.getElementById("canvas");
 			var ctx=c.getContext("2d");
+			ctx.strokeStyle = 'rgba(, 255, 0, 1)';
+			ctx.lineWidth = 10;
+      			ctx.lineJoin = 'round';
+			ctx.lineCap = 'round';
+			
 			ctx.moveTo(0,0);
 			ctx.lineTo(2000,1500);
 			ctx.stroke();
