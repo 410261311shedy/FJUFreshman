@@ -51,6 +51,20 @@
 			<script src="assets/js/main.js"></script>
 		<!-- code -->
 		<script>
+			var urlParams = new URLSearchParams(window.location.search);
+			var locationValue = urlParams.get("location");
+			var destinationValue = urlParams.get("destination");
+
+			console.log(locationValue); // 輸出使用者輸入的 location 值
+			console.log(destinationValue); // 輸出使用者輸入的 destination 值
+			
+			var locationElement = document.getElementById("locationValue");
+			locationElement.textContent = locationValue;
+			var destinationElement = document.getElementById("destinationValue");
+			destinationElement.textContent = destinationValue;
+			
+			alert("Location"+locationValue + "Destination: " + destinationValue);
+			
 			var c=document.getElementById("canvas");
 			var ctx=c.getContext("2d");
 			ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
