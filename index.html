@@ -105,10 +105,12 @@
 		<script>
 			function goToCanvasPage()
 			{
-				var input = document.getElementById("destination");
-				var destination = input.value;
-				alert("Destination: " + destination);	
-				window.location.href = "canvas.html";
+				var locationInput = document.getElementById("location");
+				var location =locationInput.value;
+				var destinationInput = document.getElementById("destination");
+				var destination = destinationInput.value;
+				alert("Location"+location + "Destination: " + destination);	
+				window.location.href = "canvas.html?location=" + encodeURIComponent(locationValue) + "&destination=" + encodeURIComponent(destinationValue);
 			}
 	        </script>
 		
