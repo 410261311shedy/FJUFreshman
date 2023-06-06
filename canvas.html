@@ -19,7 +19,7 @@
 				animation: floating 2.3s ease-in-out infinite, spinning 3.0s ease-in-out infinite;
 			}		
 			canvas {
-			background-image: url(https://github.com/410261311shedy/FJUFreshman/blob/main/images/FJUmap.jpg);
+			background-image: img<src="images/FJUmap.jpg">;
 			background-size: cover;
 			}
 		</style>
@@ -27,7 +27,7 @@
 	<body class="is-preload">
 		<div id="wrapper">
 			<h2 class="major">Way To Your Destination</h2>
-					
+					<canvas id="myCanvas" width="800" height="600"></canvas>
 					<ul class="actions">
 						<li><button onclick="goBack()">goback</button></li>
 					</ul>	
@@ -43,7 +43,7 @@
 			<script src="assets/js/main.js"></script>
 		<!-- code -->
 		<script>
-			function GoBack()
+			function goBack()
 			{	
 				window.location.href = "index.html";
 			}
