@@ -59,12 +59,12 @@
 			console.log(destination); // 輸出使用者輸入的 destination 值
 			
 			//賦予值
-			var locationElement = document.getElementById("locationValue");
-			locationElement.textContent = locationValue;
-			var destinationElement = document.getElementById("destinationValue");
-			destinationElement.textContent = destinationValue;
+			var locationElement = document.getElementById("location");
+			locationElement.textContent = location;
+			var destinationElement = document.getElementById("destination");
+			destinationElement.textContent = destination;
 			
-			alert("Location: "+locationValue + "Destination: " + destinationValue);
+			alert("Location: "+location + "Destination: " + destination);
 			
 			var c=document.getElementById("canvas");
 			var ctx=c.getContext("2d");
