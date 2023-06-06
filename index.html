@@ -71,35 +71,10 @@
 									</div>
 										
 									<ul class="actions">
-										<li><button onclick="passTheValue()">start</button></li>
-										<form method="post" action="#">
-											<li><input type="reset" value="Reset" /></li>
-										</form>
+										<li><button onclick="goToCanvasPage()">start</button></li>
 									</ul>
 									
 								
-								
-							</article>
-						<!-- FinalMap -->
-							<article id="finalmap">
-								<h2 class="major">Map</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field">
-											<label for="location" style> <center><p class = 'mapfont'>Your Location</p></label>
-											<input type="text" name="Location" id="location" />
-										</div>
-										<br/>
-										<div class="field">
-											<label for="destination"><center><p class = 'mapfont'>Your Destination</p></label>
-											<input type="text" name="Destination" id="destination" />
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="start" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
 								
 							</article>
 
@@ -116,11 +91,12 @@
 			<script src="assets/js/main.js"></script>
 		<!-- code -->
 		<script>
-			function passTheValue() 
+			function goToCanvasPage()() 
 			{
 				var input = document.getElementById("destination");
 				var destination = input.value;
-				alert("Destination: " + destination);
+				alert("Destination: " + destination);	
+				window.location.href = "canvas.html";
 			}
 	        </script>
 		
