@@ -27,9 +27,9 @@
 	<body class="is-preload">
 		<div id="wrapper">
 			<h2 class="major">Way To Your Destination</h2>
-					<canvas id="myCanvas" width="800" height="600"></canvas>
+					
 					<ul class="actions">
-						<li><button onclick="goToCanvasPage()">goback</button></li>
+						<li><button onclick="goBack()">goback</button></li>
 					</ul>	
 			
 		</div>
@@ -43,11 +43,8 @@
 			<script src="assets/js/main.js"></script>
 		<!-- code -->
 		<script>
-			function goToCanvasPage()
-			{
-				var input = document.getElementById("destination");
-				var destination = input.value;
-				alert("Destination: " + destination);	
+			function GoBack()
+			{	
 				window.location.href = "index.html";
 			}
 	        </script>
