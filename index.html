@@ -422,7 +422,7 @@ var matrix = [[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                         sequence[i].father_node = temp;
                         //console.log("sequence"+i+" = "+sequence[i].father_node);
                         //father
-                        openlist.enqueue(sequence[i].nam,sequence[i].coordinatex,sequence[i].coordinatey,sequence[i].predict_value,sequence[i].father_node,g_value);
+                        openlist.enqueue(sequence[i].nam,sequence[i].coordinatex,sequence[i].coordinatey,sequence[i].predict_value,sequence[i].father_node,sequence[i].g_value);
                     }
                 }
             }
