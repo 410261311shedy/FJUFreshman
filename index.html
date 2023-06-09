@@ -373,7 +373,7 @@ var wtrix = [[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
          return Math.sqrt((x_sec - x_first) ** 2 + (y_sec - y_first) ** 2);
 
     }
-    function Recursion(end_node,matrix,sequence){
+    function Recursion(end_node,matrix){
         if (openlist.value.length != 0){
             var temp = openlist.dequeue();
 
@@ -409,24 +409,24 @@ var wtrix = [[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
         }
         else console.log("openlsit is empty");
   
-        if(openlist.value.length != 0 && sig == 0)Recursion(end_node, matrix,sequence);
+        if(openlist.value.length != 0 && sig == 0)Recursion(end_node, matrix);
     }
 var arr = [];					
-    function a_star(start_node , end_node,matrix,sequence){
+    function a_star(start_node , end_node,matrix){
+	while(arr.length !=0){
+            arr.pop();
+        }
+        while(openlist.value.length != 0)openlist.value.pop();
         sequence[start_node].father_node = -5;
         sequence[start_node].g_value = 0;
         openlist.enqueue(start_node,sequence[start_node].coordinatex,sequence[start_node].coordinatey,sequence[start_node].predict_value,sequence[start_node].father_node,sequence[start_node].g_value);
-        Recursion(end_node,matrix,sequence);
+        Recursion(end_node,matrix);
         var temp = end_node;
        while (sequence[temp].father_node != -5){
             arr.push(temp);
             temp = sequence[temp].father_node;
         }
         arr.push(start_node);
-    }
-    a_star(5, 8,wtrix,sequence);
-   for(let i=0;i<arr.length;i++){
-        console.log(arr[i]);
     }
 	        </script>
 		
