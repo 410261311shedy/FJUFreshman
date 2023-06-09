@@ -374,18 +374,6 @@ var wtrix = [[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 
     }
     function Recursion(end_node,matrix,sequence){
-       // console.log(sequence[1]);
-        //console.log(sequence[2]);
-        //console.log("sequence[1].father = " + sequence[1].father_node+ " ");
-        //console.log("here");
-        //console.log("openlist length" + openlist.value.length);
-        /*console.log("matrix.length: " + matrix.length);
-        for(let i = 0; i < matrix.length; i++){
-            for(let j = 0 ; j < matrix[i].length; j++){
-                console.log(matrix[i][i]+ " ");
-            }
-            console.log('/n');
-        }*/
         if (openlist.value.length != 0){
             var temp = openlist.dequeue();
 
@@ -393,23 +381,16 @@ var wtrix = [[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
             //let temp = rec.name;
             var sig = 0;
             for(let i = 0 ; i < matrix[temp].length ; i++){
-                //console.log("matrix["+temp+"]["+i+"] = "+matrix[temp][i]+"\n");
                 if(matrix[temp][i] !=0  &&  i == end_node){//find the node we want
-                    //console.log("koko");
                     sequence[i].father_node = temp;
-                    //console.log("sequence"+i+" = "+sequence[i].father_node);
-                    //sequence[i].father = temp;
                     sig = 1; 
                     break;
                 }
                 else if(matrix[temp][i] != 0 &&  sequence[i].father_node == -1){
-                    //console.log("here");
                     sequence[i].father_node = temp;
-                    //console.log("sequence"+i+" = "+sequence[i].father_node);
                     sequence[i].g_value = dis(sequence[temp]  , sequence[i]) + sequence[temp].g_value;//g(n)
                     var goofn = dis(sequence[i] , sequence[end_node]);//h(N)
                     sequence[i].predict_value = sequence[i].g_value + goofn;
-                    //console.log("sequence"+i+" predict_value  = "+sequence[i].predict_value+"\n");
                     openlist.enqueue(sequence[i].nam,sequence[i].coordinatex,sequence[i].coordinatey,sequence[i].predict_value,sequence[i].father_node,sequence[i].g_value);
                 }
                 else if(matrix[temp][i] != 0 &&  sequence[i].father_node !== -1 && sequence[temp].father_node != -1 && sequence[temp].father_node > 0){//have visited , calculate whether the new path is shortter
@@ -421,8 +402,6 @@ var wtrix = [[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
                         sequence[i].predict_value = temp_fn;
                         sequence[i].g_value = googn;
                         sequence[i].father_node = temp;
-                        //console.log("sequence"+i+" = "+sequence[i].father_node);
-                        //father
                         openlist.enqueue(sequence[i].nam,sequence[i].coordinatex,sequence[i].coordinatey,sequence[i].predict_value,sequence[i].father_node,g_value);
                     }
                 }
@@ -440,14 +419,11 @@ var wtrix = [[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
         var temp = end_node;
        while (sequence[temp].father_node != -5){
             console.log(temp);
-            //console.log(sequence[temp].father);
             temp = sequence[temp].father_node;
         }
         console.log(start_node);
         //console.log("1");
     }
-    //var wtrix = [[0,1,0],[1,0,1],[0,1,0]];
-    
     a_star(5, 8,wtrix,sequence);
 	        </script>
 		
