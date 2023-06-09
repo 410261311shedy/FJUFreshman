@@ -417,6 +417,11 @@ var arr = [];
             arr.pop();
         }
         while(openlist.value.length != 0)openlist.value.pop();
+	for(let i = 0; i < sequence.length; i++){
+            sequence[i].predict_value = 0;
+            sequence[i].g_value = 0;
+            sequence[i].father_node = -1;
+        }
         sequence[start_node].father_node = -5;
         sequence[start_node].g_value = 0;
         openlist.enqueue(start_node,sequence[start_node].coordinatex,sequence[start_node].coordinatey,sequence[start_node].predict_value,sequence[start_node].father_node,sequence[start_node].g_value);
