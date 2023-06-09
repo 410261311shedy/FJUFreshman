@@ -411,6 +411,7 @@ var wtrix = [[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
   
         if(openlist.value.length != 0 && sig == 0)Recursion(end_node, matrix,sequence);
     }
+var arr = [];					
     function a_star(start_node , end_node,matrix,sequence){
         sequence[start_node].father_node = -5;
         sequence[start_node].g_value = 0;
@@ -418,13 +419,15 @@ var wtrix = [[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
         Recursion(end_node,matrix,sequence);
         var temp = end_node;
        while (sequence[temp].father_node != -5){
-            console.log(temp);
+            arr.push(temp);
             temp = sequence[temp].father_node;
         }
-        console.log(start_node);
-        //console.log("1");
+        arr.push(start_node);
     }
     a_star(5, 8,wtrix,sequence);
+   for(let i=0;i<arr.length;i++){
+        console.log(arr[i]);
+    }
 	        </script>
 		
 
