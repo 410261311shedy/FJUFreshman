@@ -355,6 +355,8 @@
 				    }
 				    let arr = [];
 				    function a_star(start_node , end_node){
+					    start_node--;
+					    end_node--;
 					    console.log("astar begin");
 					while(arr.length !=0){
 					    arr.pop();
@@ -387,7 +389,7 @@
 				    }
 						ctx.stroke();
 				    }
-				    a_star(parseInt(locationValue, 10)-1, parseInt(1destinationValue, 10)-1);
+				    a_star(locationValue, destinationValue);
 
 
 						}
