@@ -391,7 +391,8 @@
 	    var idk = a_star(locationValue-1, destinationValue-1);
 	ctx.beginPath();
 	ctx.moveto(sequence[idx[0]].coordinatex,sequence[idx[0]].coordinatey);
-	    for(var i=1;i<idk.length;i++){	
+	    for(let i=1;i<idk.length;i++){
+		  console.log(idx[i]);
 		ctx.lineto(sequence[idx[i]].coordinatex,sequence[idx[i]].coordinatey);
 	    }
 			ctx.stroke();
