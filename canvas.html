@@ -59,9 +59,7 @@
 			<!--Canvas-->
 					var _canvas = document.getElementById('canvas');
 					var ctx = _canvas.getContext('2d');
-					draw();
-					t();
-
+		        		draw();
 			<!--Getvariables-->
 					var urlParams = new URLSearchParams(window.location.search);
 					var locationValue = urlParams.get("location");
@@ -74,8 +72,6 @@
 					locationElement.textContent = locationValue;
 					var destinationElement = document.getElementById("destination");
 					destinationElement.textContent = destinationValue;
-
-
 					function draw()
 					{
 					    ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
@@ -389,14 +385,11 @@
 					for(let i=0;i<arr.length;i++){
 						console.log(arr[i]);
 					}
-					    ctx.lineWidth = 10;
-						    ctx.lineJoin = 'round';
-						    ctx.lineCap = 'round';
-					 ctx.beginPath();
-				ctx.moveto(sequence[arr[0]].coordinatex,sequence[arr[0]].coordinatey);
+		                ctx.beginPath();
+				ctx.moveTo(sequence[arr[0]].coordinatex,sequence[arr[0]].coordinatey);
 				for(let i=1;i<arr.length;i++){
 					console.log(arr[i]);
-					ctx.lineto(sequence[arr[i]].coordinatex,sequence[arr[i]].coordinatey);
+					ctx.lineTo(sequence[arr[i]].coordinatex,sequence[arr[i]].coordinatey);
 				    }
 						ctx.stroke();
 				    }
