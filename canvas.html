@@ -337,7 +337,7 @@
 						    sequence[i].predict_value = sequence[i].g_value + goofn;
 						    openlist.enqueue(sequence[i].nam,sequence[i].coordinatex,sequence[i].coordinatey,sequence[i].predict_value,sequence[i].father_node,sequence[i].g_value);
 						}
-						else if(matrix[temp][i] != 0 &&  sequence[i].father_node !== -1 && sequence[temp].father_node != -1 && sequence[temp].father_node > 0){
+						else if(matrix[temp][i] != 0 &&  sequence[i].father_node !== -1 && sequence[temp].father_node != -1 && sequence[temp].father_node >= 0){
 						    let googn = dis(sequence[temp]  , sequence[i]) + sequence[temp].g_value;
 						    let goofn = dis(sequence[i] , sequence[end_node]);
 						    var temp_fn = goofn + googn;
@@ -357,7 +357,6 @@
 				    function a_star(start_node , end_node){
 					    start_node--;
 					    end_node--;
-					    console.log("end_node = "+end_node+"start_node = "+start_node);
 					while(arr.length !=0){
 					    arr.pop();
 					}
@@ -368,7 +367,6 @@
 					    sequence[i].father_node = -1;
 					}
 					sequence[start_node].father_node = -5;
-					sequence[start_node].g_value = 0;
 					openlist.enqueue(start_node,sequence[start_node].coordinatex,sequence[start_node].coordinatey,sequence[start_node].predict_value,sequence[start_node].father_node,sequence[start_node].g_value);
 					Recursion(end_node);
 					var temp = end_node;
@@ -377,21 +375,18 @@
 					    temp = sequence[temp].father_node;
 					}
 					arr.push(start_node);
-					console.log("hi arr length = "+arr.length);
+					console.log("arr.length = "+arr.length);
 					for(let i=0;i<arr.length;i++){
 						console.log(arr[i]);
 					}
 		                ctx.beginPath();
 				ctx.moveTo(sequence[arr[0]].coordinatex,sequence[arr[0]].coordinatey);
 				for(let i=1;i<arr.length;i++){
-					console.log(arr[i]);
 					ctx.lineTo(sequence[arr[i]].coordinatex,sequence[arr[i]].coordinatey);
 				    }
 						ctx.stroke();
 				    }
 				    a_star(Number(locationValue), Number(destinationValue));
-
-
 						}
 
 					function goBack()
