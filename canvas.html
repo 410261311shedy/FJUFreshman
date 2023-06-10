@@ -391,8 +391,15 @@
 	    var idk = a_star(locationValue-1, destinationValue-1);
 	ctx.moveto(sequence[idx[0]].coordinatex,sequence[idx[0]].coordinatey);
 	    for(var i=1;i<idk.length;i++){
-		ctx.moveto(sequence[idx[i]].coordinatex,sequence[idx[i]].coordinatey);
+		ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
+	        ctx.lineWidth = 10;
+		ctx.lineJoin = 'round';
+		ctx.lineCap = 'round';
+
+		ctx.beginPath();
+		ctx.lineto(sequence[idx[i]].coordinatex,sequence[idx[i]].coordinatey);
 	    }
+			ctx.stroke();
 			function goBack()
 			{	
 				alert("location: " + locationValue + "destination" + destinationValue);
