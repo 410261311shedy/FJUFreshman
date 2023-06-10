@@ -70,18 +70,26 @@
 			destinationElement.textContent = destinationValue;
 			
 	<!--Canvas-->
-			var c=document.getElementById("canvas");
-			var ctx=c.getContext("2d");
-			/*ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
-			ctx.lineWidth = 10;
-      			ctx.lineJoin = 'round';
-			ctx.lineCap = 'round';*/
+			var _canvas = document.getElementById('canvas');
 			
-			ctx.beginPath();
-			ctx.moveTo(0,0);
-			ctx.lineTo(500,500);
-			ctx.strokeStyle = "#B90CB3";
-			ctx.stroke();
+			if (_canvas.getContext) 
+			{
+			    var ctx = canvas.getContext('2d');
+			    draw3();
+			  }
+
+			function draw3()
+			{
+			    var ctx=c.getContext("2d");
+			    ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
+			    ctx.lineWidth = 10;
+      			    ctx.lineJoin = 'round';
+			    ctx.lineCap = 'round';
+			    ctx.beginPath(); //線段開始
+			    ctx.moveTo(0,0); //從20,100的點
+			    ctx.lineTo(2500,1720); //畫線段到130,100
+			    ctx.lineTo(2500,0);
+			    ctx.fill(); //填滿
 			
 			function goBack()
 			{	
