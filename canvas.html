@@ -59,7 +59,7 @@
 	<!--Canvas-->
 			var _canvas = document.getElementById('canvas');
 			var ctx = _canvas.getContext('2d');
-			
+			draw();
 			
 			
 	<!--Getvariables-->
@@ -75,7 +75,7 @@
 			var destinationElement = document.getElementById("destination");
 			destinationElement.textContent = destinationValue;
 			
-			draw();
+			
 			function draw()
 			{
 			    ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
