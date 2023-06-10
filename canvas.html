@@ -60,21 +60,7 @@
 			var _canvas = document.getElementById('canvas');
 			var ctx = _canvas.getContext('2d');
 			
-			draw();
 			
-			function draw()
-			{
-			    ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
-			    ctx.lineWidth = 10;
-			    ctx.lineJoin = 'round';
-			    ctx.lineCap = 'round';
-
-			    ctx.beginPath();
-			    ctx.moveTo(0, 0);
-			    ctx.lineTo(2500, 1720);
-			    ctx.lineTo(2500, 0);
-			    ctx.stroke();
-			}
 			
 	<!--Getvariables-->
 			var urlParams = new URLSearchParams(window.location.search);
@@ -89,7 +75,20 @@
 			var destinationElement = document.getElementById("destination");
 			destinationElement.textContent = destinationValue;
 			
-	
+			draw();
+			function draw()
+			{
+			    ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
+			    ctx.lineWidth = 10;
+			    ctx.lineJoin = 'round';
+			    ctx.lineCap = 'round';
+
+			    ctx.beginPath();
+			    ctx.moveTo(0, 0);
+			    ctx.lineTo(2500, 1720);
+			    ctx.lineTo(2500, 0);
+			    ctx.stroke();
+			}
 
 			function goBack()
 			{	
