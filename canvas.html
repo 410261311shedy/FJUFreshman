@@ -365,6 +365,7 @@
 			    }
 			    var arr = [];
 			    function a_star(start_node , end_node){
+				    console.log("astar begin");
 				while(arr.length !=0){
 				    arr.pop();
 				}
@@ -387,6 +388,7 @@
 				return arr;
 			    }
 			    var idk = a_star(44, 45);
+					if(idx.length == 0)console.log("fuck");
 					ctx.lineWidth = 10;
 					    ctx.lineJoin = 'round';
 					    ctx.lineCap = 'round';
