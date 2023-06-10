@@ -85,11 +85,13 @@
 			    ctx.lineWidth = 10;
       			    ctx.lineJoin = 'round';
 			    ctx.lineCap = 'round';
-			    ctx.beginPath(); //線段開始
-			    ctx.moveTo(0,0); //從20,100的點
-			    ctx.lineTo(2500,1720); //畫線段到130,100
+				
+			    ctx.beginPath(); 
+			    ctx.moveTo(0,0); 
+			    ctx.lineTo(2500,1720);
 			    ctx.lineTo(2500,0);
 			    ctx.fill(); //填滿
+			    ctx.stroke();
 			
 			function goBack()
 			{	
