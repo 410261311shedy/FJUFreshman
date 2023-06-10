@@ -388,7 +388,7 @@
 		arr.push(start_node);
 		return arr;
 	    }
-	    var idk = a_star(locationValue, destinationValue);
+	    var idk = a_star(locationValue-1, destinationValue-1);
 	ctx.moveto(sequence[idx[0]].coordinatex,sequence[idx[0]].coordinatey);
 	    for(var i=1;i<idk.length;i++){
 		ctx.moveto(sequence[idx[i]].coordinatex,sequence[idx[i]].coordinatey);
