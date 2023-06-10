@@ -363,7 +363,7 @@
 				else console.log("openlsit is empty");
 				if(openlist.value.length != 0 && sig == 0)Recursion(end_node);
 			    }
-			    var arr = [];
+			    let arr = [];
 			    function a_star(start_node , end_node){
 				    console.log("astar begin");
 				while(arr.length !=0){
@@ -385,9 +385,13 @@
 				    temp = sequence[temp].father_node;
 				}
 				arr.push(start_node);
+				console.log("hi arr length = "+arr.length);
+				for(let i=0;i<arr.length;i++){
+					console.log(arr[i]);
+				}
 				return arr;
 			    }
-			    var idk = a_star(44, 45);
+			    const idk = a_star(44, 45);
 					if(idx.length == 0)console.log("fuck");
 					ctx.lineWidth = 10;
 					    ctx.lineJoin = 'round';
