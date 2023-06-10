@@ -56,6 +56,26 @@
 		<!-- code -->
 		<script>
 			
+	<!--Canvas-->
+			var _canvas = document.getElementById('canvas');
+			var ctx = _canvas.getContext('2d');
+			
+			draw();
+			
+			function draw()
+			{
+			    ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
+			    ctx.lineWidth = 10;
+			    ctx.lineJoin = 'round';
+			    ctx.lineCap = 'round';
+
+			    ctx.beginPath();
+			    ctx.moveTo(0, 0);
+			    ctx.lineTo(2500, 1720);
+			    ctx.lineTo(2500, 0);
+			    ctx.stroke();
+			}
+			
 	<!--Getvariables-->
 			var urlParams = new URLSearchParams(window.location.search);
 			var locationValue = urlParams.get("location");
@@ -69,33 +89,7 @@
 			var destinationElement = document.getElementById("destination");
 			destinationElement.textContent = destinationValue;
 			
-	<!--Canvas-->
-			var _canvas = document.getElementById('canvas');
-			var ctx = _canvas.getContext('2d');
-
-			// 繪製地圖背景
-			var backgroundImage = new Image();
-			backgroundImage.src = 'https://github.com/410261311shedy/FJUFreshman/raw/main/images/FJUmap.jpg';
-			backgroundImage.onload = function() 
-			{
-			    ctx.drawImage(backgroundImage, 0, 0, 2500, 1720);
-			    // 繪製線條
-			    draw3();
-			};
-
-			function draw3()
-			{
-			    ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
-			    ctx.lineWidth = 10;
-			    ctx.lineJoin = 'round';
-			    ctx.lineCap = 'round';
-
-			    ctx.beginPath();
-			    ctx.moveTo(0, 0);
-			    ctx.lineTo(2500, 1720);
-			    ctx.lineTo(2500, 0);
-			    ctx.stroke();
-			}
+	
 
 			function goBack()
 			{	
