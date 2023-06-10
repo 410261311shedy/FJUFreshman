@@ -72,24 +72,31 @@
 	<!--Canvas-->
 			var _canvas = document.getElementById('canvas');
 			var ctx = _canvas.getContext('2d');
-			
-			draw3();
+
+			// 繪製地圖背景
+			var backgroundImage = new Image();
+			backgroundImage.src = 'https://github.com/410261311shedy/FJUFreshman/raw/main/images/FJUmap.jpg';
+			backgroundImage.onload = function() 
+			{
+			    ctx.drawImage(backgroundImage, 0, 0, _canvas.width, _canvas.height);
+			    // 繪製線條
+			    draw3();
+			};
 
 			function draw3()
 			{
-			    //ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
-			    // ctx.lineWidth = 10;
-      			    //ctx.lineJoin = 'round';
-			    //ctx.lineCap = 'round';
-				
-			    ctx.fillStyle = "rgb(200,0,0)";	
-			    ctx.beginPath(); 
-			    ctx.moveTo(0,0); 
-			    ctx.lineTo(2500,1720);
-			    ctx.lineTo(2500,0);
-			    ctx.fill(); //填滿
+			    ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
+			    ctx.lineWidth = 10;
+			    ctx.lineJoin = 'round';
+			    ctx.lineCap = 'round';
+
+			    ctx.beginPath();
+			    ctx.moveTo(0, 0);
+			    ctx.lineTo(2500, 1720);
+			    ctx.lineTo(2500, 0);
 			    ctx.stroke();
 			}
+
 			function goBack()
 			{	
 				alert("location: " + locationValue + "destination" + destinationValue);
