@@ -71,12 +71,8 @@
 			
 	<!--Canvas-->
 			var _canvas = document.getElementById('canvas');
-			
-			if (_canvas.getContext) 
-			{
-			    var ctx = canvas.getContext('2d');
-			    draw3();
-			  }
+			var ctx = canvas.getContext('2d');
+			draw3();
 
 			function draw3()
 			{
