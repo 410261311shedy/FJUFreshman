@@ -55,8 +55,7 @@
 			<script src="assets/js/main.js"></script>
 		<!-- code -->
 		<script>
-			var c=document.getElementById("canvas");
-			var ctx=c.getContext("2d");
+			
 	<!--Getvariables-->
 			var urlParams = new URLSearchParams(window.location.search);
 			var locationValue = urlParams.get("location");
@@ -71,6 +70,8 @@
 			destinationElement.textContent = destinationValue;
 			
 	<!--Canvas-->
+			var c=document.getElementById("canvas");
+			var ctx=c.getContext("2d");
 			ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
 			ctx.lineWidth = 10;
       			ctx.lineJoin = 'round';
