@@ -59,7 +59,7 @@
 			<!--Canvas-->
 					var _canvas = document.getElementById('canvas');
 					var ctx = _canvas.getContext('2d');
-		        		draw();
+		        		
 			<!--Getvariables-->
 					var urlParams = new URLSearchParams(window.location.search);
 					var locationValue = urlParams.get("location");
@@ -67,7 +67,7 @@
 
 					console.log(locationValue); 
 					console.log(destinationValue);
-
+					draw();
 					var locationElement = document.getElementById("location");
 					locationElement.textContent = locationValue;
 					var destinationElement = document.getElementById("destination");
