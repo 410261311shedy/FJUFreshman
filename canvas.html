@@ -329,6 +329,7 @@
 				    function Recursion(end_node){
 					if (openlist.value.length != 0){
 					    var temp = openlist.dequeue();
+						console.log("pop = "+temp);
 					    var sig = 0;
 					    for(let i = 0 ; i < matrix[temp].length ; i++){
 						if(matrix[temp][i] !=0  &&  i == end_node){
