@@ -327,8 +327,6 @@
 
 				    }
 				    function Recursion(end_node){
-					    console.log("hi");
-					    console.log("length of openlist = "+openlist.value.length);
 					if (openlist.value.length != 0){
 					    var temp = openlist.dequeue();
 						console.log("pop = "+temp);
@@ -368,7 +366,6 @@
 					    
 					    start_node--;
 					    end_node--;
-					    console.log("sequence["+start_node+"] = "+sequence[start_node].nam);
 					while(arr.length !=0){
 					    arr.pop();
 					}
@@ -380,7 +377,6 @@
 					}
 					sequence[start_node].father_node = -5;
 					openlist.enqueue(start_node,sequence[start_node].coordinatex,sequence[start_node].coordinatey,sequence[start_node].predict_value,sequence[start_node].father_node,sequence[start_node].g_value);
-					console.log("openlist[0] = "+openlist.value[0].nam);  
 					Recursion(end_node);
 					var temp = end_node;
 				       while (sequence[temp].father_node != -5){
