@@ -342,7 +342,7 @@ var matrix = [[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 						    sequence[i].g_value = dis(sequence[temp]  , sequence[i]) + sequence[temp].g_value;//g(n)
 						    var goofn = dis(sequence[i] , sequence[end_node]);
 						    sequence[i].predict_value = sequence[i].g_value + goofn;
-						   
+						   console.log("push = "+sequence[i].nam+" pre = "+sequence[i].predict_value);
 						    openlist.enqueue(sequence[i].nam,sequence[i].coordinatex,sequence[i].coordinatey,sequence[i].predict_value,sequence[i].father_node,sequence[i].g_value);
 						}
 						else if(matrix[temp][i] != 0 &&  sequence[i].father_node !== -1 && sequence[temp].father_node != -1 && sequence[temp].father_node >= 0){
